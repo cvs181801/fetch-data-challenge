@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import React from "react"
+import DataFetcher from "./components/DataFetcher"
+
+function App() {    
+    return (
+        <div>
+            <DataFetcher url="https://swapi.dev/api/people/1/">
+                {(data) => {
+                  if (data) {
+                    return <h1>{data.name}</h1>
+                  } else {
+                    return <h1>Loading...</h1>
+                  }
+                }
+                
+                
+                /**
+                 * Part 2: Call the function the DataFetcher is expecting.
+                 * If should receive the data and the loading state, and return the JSX
+                 * that makes use of that info. If the data is still loading, display
+                 * "Loading..." in an h1 element, and once the data has loaded, just display 
+                 * the data with `<p>{JSON.stringify(data)}</p>`
+                 * 
+                 * Remember: With the render props pattern, you can use a custom prop
+                 * (typically called `render`), OR you can use `props.children`. Based
+                 * on what's already written here for you, you should be able to figure
+                 * out which of these we're using. (You may have to make changes to the
+                 * DataFetcher component based on what you see here.)
+                 */}
+            </DataFetcher>
+        </div>
+    )
 }
 
-export default App;
+export default App
